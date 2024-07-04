@@ -27,10 +27,9 @@ export class ConsolidationService {
     async runRoutine(body) {
         try {
             logger.debug('Runnig Routine');
-            const response = await this._userLogsConsolidationUseCase.execute(body);
-            if (!response.success) throw new Error(response.message);
+            this._userLogsConsolidationUseCase.execute(body);
             logger.debug('Finished Routine');
-            return response
+            return 'Run Routine';
         } catch (err) {
             logger.error(err);
         }
