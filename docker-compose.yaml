@@ -1,7 +1,7 @@
 version: '3.7'
 services:
-  apiwalogs:
-    container_name: apiwalogs
+  consolidationlogs:
+    container_name: consolidationlogs
     image: yizimaw/consolidation_metrics_access_app:v01A
     restart: always
     ports:
@@ -13,15 +13,15 @@ services:
       - DBPOSTGRES_DATABASE=VYZ
       - PORT=3034
 
-    # labels:
-    #   - 'traefik.enable=true'
-    #   - 'traefik.http.routers.apiwalogs.rule=Host(`apiwalogs.vyzolutions.com.br`)'
-    #   - 'traefik.http.routers.apiwalogs.entrypoints=websecure'
-    #   - 'traefik.http.routers.apiwalogs.tls.certresolver=leresolver'
-    #   - 'traefik.http.services.apiwalogs.loadbalancer.server.port=3033'
-#     networks:
-#       - portainer_default
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.consolidationlogs.rule=Host(`consolidationlogs.vyzolutions.com.br`)'
+      - 'traefik.http.routers.consolidationlogs.entrypoints=websecure'
+      - 'traefik.http.routers.consolidationlogs.tls.certresolver=leresolver'
+      - 'traefik.http.services.consolidationlogs.loadbalancer.server.port=3033'
+    networks:
+      - portainer_default
 
-# networks:
-#   portainer_default:
-#     external: true
+networks:
+  portainer_default:
+    external: true
