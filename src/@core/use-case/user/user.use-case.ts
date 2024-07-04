@@ -11,6 +11,7 @@ interface DistinctLogsDto {
     metrics_month: string;
     metrics_year: number;
     metrics_count_access: number;
+    metrics_date_sessions_created: Date;
 }
 
 
@@ -49,6 +50,7 @@ export class UserLogsConsolidationUseCase {
                     metrics_month: getNameMonth,
                     metrics_year: startDateLog.getFullYear(),
                     metrics_count_access: 0,
+                    metrics_date_sessions_created: startDateLog
                 }
             });
 
