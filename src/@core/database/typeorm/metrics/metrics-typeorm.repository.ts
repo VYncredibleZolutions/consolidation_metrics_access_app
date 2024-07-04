@@ -21,4 +21,16 @@ export class MetricsTypeOrmRepository {
         })
     }
 
+    async findAllByDate(start_date, end_date) {
+        const newQuery = this.ormRepo.createQueryBuilder('mt').select()
+
+        if (start_date && end_date) {
+            newQuery.andWhere("mt.metrics_date_sessions_created BETWEEN :startDate AND :endDate", {
+                startDate: start_date,
+                endDate: end_date,
+            })
+        }
+        return await newQuery.getRawMany();
+    }
+
 }
