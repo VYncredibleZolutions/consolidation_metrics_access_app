@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  apiwalogs:
+    container_name: apiwalogs
+    image: yizimaw/consolidation_metrics_access_app:v01A
+    restart: always
+    ports:
+      - '3033:3033'
+    environment:
+      - DBPOSTGRES_HOST=37.60.247.1
+      - DBPOSTGRES_USER=root
+      - DBPOSTGRES_PASS=ZdGXaUHeZ3EKafasfasfaszU=dasdasdsa
+      - DBPOSTGRES_DATABASE=VYZ
+      - PORT=3034
+
+    # labels:
+    #   - 'traefik.enable=true'
+    #   - 'traefik.http.routers.apiwalogs.rule=Host(`apiwalogs.vyzolutions.com.br`)'
+    #   - 'traefik.http.routers.apiwalogs.entrypoints=websecure'
+    #   - 'traefik.http.routers.apiwalogs.tls.certresolver=leresolver'
+    #   - 'traefik.http.services.apiwalogs.loadbalancer.server.port=3033'
+#     networks:
+#       - portainer_default
+
+# networks:
+#   portainer_default:
+#     external: true
