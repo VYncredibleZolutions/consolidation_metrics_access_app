@@ -22,7 +22,13 @@ export class MetricsTypeOrmRepository {
     }
 
     async findAllByDate(start_date, end_date) {
-        const newQuery = this.ormRepo.createQueryBuilder('mt').select()
+        const newQuery = this.ormRepo.createQueryBuilder('mt').select([
+            'mt.metrics_count_access AS count_access',
+            'mt.metrics_day AS day',
+            'mt.metrics_month AS month',
+            'mt.metrics_year AS year',
+            'mt.metrics_date_sessions_created AS date_sessions_created',
+        ])
 
         if (start_date && end_date) {
             newQuery.andWhere("mt.metrics_date_sessions_created BETWEEN :startDate AND :endDate", {
@@ -30,6 +36,7 @@ export class MetricsTypeOrmRepository {
                 endDate: end_date,
             })
         }
+        newQuery.orderBy('mt.metrics_day', 'DESC')
         return await newQuery.getRawMany();
     }
 
