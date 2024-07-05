@@ -36,7 +36,7 @@ export class MetricsTypeOrmRepository {
                 endDate: end_date,
             })
         }
-        newQuery.orderBy('mt.metrics_day', 'DESC')
+        newQuery.orderBy('mt.metrics_date_sessions_created', 'DESC')
         return await newQuery.getRawMany();
     }
 
