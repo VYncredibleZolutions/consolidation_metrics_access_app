@@ -23,6 +23,12 @@ export class MetricsSchema {
     @Column()
     metrics_year: number;
 
+    @Column({
+        nullable: true,
+        type: 'timestamp'
+    })
+    metrics_date_sessions_created: Date;
+
     @CreateDateColumn({
         name: 'metrics_created_at',
         type: 'timestamp',

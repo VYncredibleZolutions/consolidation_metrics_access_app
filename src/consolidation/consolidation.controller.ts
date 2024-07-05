@@ -1,7 +1,9 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { ConsolidationService } from './consolidation.service';
 
 @Controller('consolidation')
+@UseGuards(AuthGuard('basic'))
 export class ConsolidationController {
     constructor(private _consolidationService: ConsolidationService) { }
 

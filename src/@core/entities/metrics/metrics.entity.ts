@@ -8,6 +8,7 @@ export interface MetricsPropsDto {
     metrics_day?: number;
     metrics_month?: string;
     metrics_year?: number;
+    metrics_date_sessions_created?: Date;
 }
 
 export class Metrics {
@@ -113,6 +114,13 @@ export class Metrics {
     }
     set metrics_year(value: number) {
         this.props.metrics_year = value;
+    }
+
+    get metrics_date_sessions_created() {
+        return this.props.metrics_date_sessions_created;
+    }
+    set metrics_date_sessions_created(value: Date) {
+        this.props.metrics_date_sessions_created = value;
     }
 
     toJSON() {
